@@ -1,59 +1,60 @@
 # ================================
-# Exemplo com Pandas DataFrame
+# Exemplo com Números Complexos e Funções
 # ================================
 
-# Pandas é uma biblioteca de análise de dados em Python.
-# A estrutura principal do Pandas é o DataFrame, que funciona como uma "tabela":
-#   - linhas (indexadas automaticamente, começando de 0)
-#   - colunas (nomeadas)
-# Cada coluna pode ter um tipo de dado (int, float, string etc).
-# Muito usado em ciência de dados, análise de planilhas, BI e machine learning.
+# Quando usamos números complexos Python.
 
-import pandas as pd
+# Engenharia elétrica → para representar corrente alternada.
+# Física → ondas eletromagnéticas, mecânica quântica.
+# Matemática → transformadas de Fourier, equações diferenciais.
+# Ciência de dados → processamento de sinais, som e imagem.
 
-print("===== PANDAS DATAFRAME =====")
+print("===== NÚMEROS COMPLEXOS =====")
 
-# Criando um DataFrame manualmente (passando um dicionário)
-# A chave do dicionário vira o nome da coluna
-# A lista associada à chave vira os valores daquela coluna
-df = pd.DataFrame({
-    "Nome": ["Ana", "João", "Maria"],   # Coluna de strings
-    "Idade": [25, 30, 28],              # Coluna de inteiros
-    "Salário": [3500, 4200, 5000]       # Coluna de floats/inteiros
-})
+# 1e10 significa "1 vezes 10 elevado a 10" (notação científica).
+# Muito usado para números muito grandes ou muito pequenos em ciência.
+num1 = 1e10       
+print("num1 =", num1)   # 10000000000.0
 
-print(df)  # Mostra a tabela formatada
+# O sufixo "j" indica parte imaginária (Python usa "j" em vez de "i").
+# Isso representa o número 3i (matemática complexa).
+num2 = 3j         
+print("num2 =", num2)   # 3j
 
+# Um número complexo tem PARTE REAL + PARTE IMAGINÁRIA
+num3 = 7 + 4j     
+print("num3 =", num3)   # (7+4j)
 
-# ===== ACESSANDO COLUNAS =====
-# Podemos acessar uma coluna pelo seu nome, como se fosse um dicionário
-print("\nColuna Idade:")
-print(df["Idade"])  # Retorna uma Series (estrutura de coluna do Pandas)
+# Podemos acessar a parte real e imaginária separadamente:
+print("Parte real de num3:", num3.real)   # 7.0
+print("Parte imaginária de num3:", num3.imag)  # 4.0
 
+# O conjugado inverte o sinal da parte imaginária: (a+bj) -> (a-bj)
+print("Conjugado de num3:", num3.conjugate())  # (7-4j)
 
-# ===== FILTRANDO LINHAS =====
-# Podemos aplicar condições para filtrar os dados.
-# Exemplo: mostrar apenas quem tem salário maior que 4000
-print("\nQuem tem salário > 4000:")
-print(df[df["Salário"] > 4000])  
-# Retorna um novo DataFrame apenas com linhas que satisfazem a condição
-
-
-# ===== CRIANDO DATAFRAME DE OUTRA FORMA =====
-# Também podemos criar DataFrame a partir de uma lista de listas,
-# e especificar os nomes das colunas manualmente.
-dados = [
-    ["Pedro", 22, 3100],
-    ["Carla", 27, 4700]
-]
-df2 = pd.DataFrame(dados, columns=["Nome", "Idade", "Salário"])
-print("\nOutro DataFrame:")
-print(df2)
+# Exemplo de operação com complexos:
+resultado = (2 + 3j) * (1 - 4j)
+print("\n(2+3j) * (1-4j) =", resultado)  
+# Isso é usado em engenharia elétrica, transformadas de Fourier, etc.
 
 
-# ===== CONCATENANDO DATAFRAMES =====
-# Podemos unir (concatenar) vários DataFrames em um só.
-# Aqui, juntamos df e df2 (um abaixo do outro).
-df_total = pd.concat([df, df2])
-print("\nDataFrame combinado:")
-print(df_total)
+# ===== FUNÇÕES =====
+print("\n===== FUNÇÕES =====")
+
+# Definição de uma função: blocos de código que podem ser reutilizados.
+# Aqui, "soma" recebe dois parâmetros e retorna o resultado.
+def soma(a, b):
+    return a + b
+
+# Exemplo de uso
+print("Soma 5 + 3 =", soma(5, 3))  # 8
+
+
+# Definição de função com parâmetro opcional (valor padrão).
+# Se não passar o expoente, ele assume 2 (potência ao quadrado).
+def potencia(base, expoente=2):  
+    return base ** expoente
+
+# Exemplo de uso
+print("Potência 3² =", potencia(3))      # usa valor padrão (expoente=2) -> 9
+print("Potência 2^5 =", potencia(2, 5))  # sobrescreve o valor padrão -> 32
